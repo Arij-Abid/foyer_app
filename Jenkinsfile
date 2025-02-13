@@ -17,19 +17,21 @@ pipeline {
     }
 
     stages {
-  stage('Checkout GIT') {
+stage('Checkout GIT') {
     steps {
         script {
             echo 'Checking GitHub Repo...'
             try {
-                git branch: 'main', url: 'https://github.com/Arij-Abid/foyer_app.git'
+                git branch: 'main', url: 'https://github.com/Arij-Abid/foyer_app.git', additionalArguments: '--depth 1 --no-tags --quiet --config core.preloadindex=true --config http.postBuffer=524288000'
             } catch (Exception e) {
                 echo "Git fetch failed: ${e.message}"
+                currentBuild.result = 'FAILURE'
                 error "Failed to fetch from Git repository"
             }
         }
     }
 }
+
 
 
         stage('git clone') {
