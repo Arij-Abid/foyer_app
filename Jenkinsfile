@@ -17,12 +17,20 @@ pipeline {
     }
 
     stages {
-        stage('Checkout GIT') {
-            steps {
-                echo 'Checking GitHub Repo...'
+  stage('Checkout GIT') {
+    steps {
+        script {
+            echo 'Checking GitHub Repo...'
+            try {
                 git branch: 'main', url: 'https://github.com/Arij-Abid/foyer_app.git'
+            } catch (Exception e) {
+                echo "Git fetch failed: ${e.message}"
+                error "Failed to fetch from Git repository"
             }
         }
+    }
+}
+
 
         stage('git clone') {
             steps {
