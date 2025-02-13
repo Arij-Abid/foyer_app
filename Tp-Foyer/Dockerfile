@@ -1,7 +1,7 @@
 FROM openjdk:17-jdk-slim
 
 # Arguments for downloading from Nexus
-ARG NEXUS_URL=http://172.16.12.241:8081/repository/maven-releases
+ARG NEXUS_URL=http://172.16.65.5:8081/repository/maven-releases
 ARG GROUP_ID=tn/projet
 ARG ARTIFACT_ID=Foyer
 ARG VERSION=3.0.0
