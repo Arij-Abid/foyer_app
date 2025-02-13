@@ -20,13 +20,13 @@ pipeline {
         stage('Checkout GIT') {
             steps {
                 echo 'Checking GitHub Repo...'
-                git branch: 'master', url: 'https://github.com/Arij-Abid/foyer_app.git'
+                git branch: 'main', url: 'https://github.com/Arij-Abid/foyer_app.git'
             }
         }
 
         stage('git clone') {
             steps {
-                git branch: 'master', url: 'https://github.com/Arij-Abid/foyer_app.git'
+                git branch: 'main', url: 'https://github.com/Arij-Abid/foyer_app.git'
             }
         }
 
