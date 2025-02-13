@@ -14,26 +14,19 @@ pipeline{
         NEXUS_REPOSITORY = "maven-nexus-repo" 
         NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
     }
-        stages {
-            stage('Checkout GIT ') {
-                steps {
-                    echo 'cheking Git hub Repo ...';
-                    git branch : 'master',
-                    url : 'https://github.com/Arij-Abid/foyer_app.git'
-                }
+        stage('Checkout GIT') {
+        steps {
+            echo 'Checking GitHub Repo...'
+            git branch: 'master', url: 'https://github.com/Arij-Abid/foyer_app.git'
+        }
             }
-         
 
-            stage('git clone') {
+        stage('git clone') {
             steps {
-               git branch: 'master', 
-               url: 'https://github.com/Arij-Abid/foyer_app.git'
+                git branch: 'master', url: 'https://github.com/Arij-Abid/foyer_app.git'
             }
         }
 
-        
-
-        
           stage('MVN CLEAN INSTALL'){
             steps {
                 sh 'mvn clean install '
@@ -45,7 +38,6 @@ pipeline{
                 }
             }
         
-
          stage('SonarQube analysis') {
 //    def scannerHome = tool 'SonarScanner 4.0';
         steps{
@@ -58,8 +50,6 @@ pipeline{
         } 
 
         
-
-
  stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
